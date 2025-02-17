@@ -490,7 +490,8 @@ class MultiDiscrete(gym.spaces.MultiDiscrete, MineRLSpace):
     def sample(self, bs=None):
         bdim = () if bs is None else (bs,)
         return (
-            self.np_random.random_sample(bdim + self.nvec.shape) * self.nvec
+            #self.np_random.random_sample(bdim + self.nvec.shape) * self.nvec
+            self.np_random.random_sample(*(bdim + self.nvec.shape)) * self.nvec
         ).astype(self.dtype)
 
 
