@@ -6,6 +6,9 @@ buildscript {
         jcenter()
         mavenCentral()
         maven {
+            url "file:/tmp"  // Point to where we cloned the repo
+        }
+        maven {
             name = "forge"
             url = "https://maven.minecraftforge.net/"
         }
@@ -16,13 +19,13 @@ buildscript {
     }
     dependencies {
         classpath 'org.ow2.asm:asm:6.0'
-        classpath('com.github.SpongePowered:MixinGradle:dcfaf61'){ // 0.6
+        classpath('MixinGradle:MixinGradle:dcfaf61'){ // 0.6
             // Because forgegradle requires 6.0 (not -debug-all) while mixingradle depends on 5.0
             // and putting mixin right here will place it before forge in the class loader
             exclude group: 'org.ow2.asm', module: 'asm-debug-all'
         }
 
-        classpath 'com.github.claucambra:ForgeGradle:FG_2.2_patched-SNAPSHOT'
+        classpath 'com.github.yunfanjiang:ForgeGradle:FG_2.2_patched-SNAPSHOT'
     }
     configurations {
         compileClasspath {
